@@ -1,17 +1,21 @@
-# 1. ここを変える！「n8n公式」ではなく「Node.jsのAlpine版」を土台にする
+# ベースイメージ
 FROM node:20-alpine
 
-# 2. Alpineなので apk が確実に動く
+# 1. 必要なツールをインストール
 RUN apk add --no-cache poppler-utils python3
 
-# 3. n8n を手動でインストール（公式イメージじゃないので自分で入れる）
-RUN npm install -g n8n
+# 2. n8nをインストール
+RUN npm install -g n8n --omit=dev --legacy-peer-deps
 
-# 4. ポート設定（Renderの環境変数設定と一致させる）
+# 3. ★ここが修正ポイント！★
+# 作業用のフォルダ /files を作成し、権限を「誰でも読み書きOK (777)」にします
+RUN mkdir -p /files && chmod 777 /files
+
+# 4. ポート設定
 ENV N8N_PORT=10000
 ENV PORT=10000
 EXPOSE 10000
 
-# 5. 実行
+# 5. 実行ユーザー
 USER node
 CMD ["n8n"]
