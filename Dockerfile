@@ -1,10 +1,11 @@
 FROM node:20-alpine
 
-# 1. 必要ツール（★ここに poppler-data を追加！）
-# poppler-data: これがないと中身が日本語のPDFは変換できません
+# 1. 必要ツール
+# font-noto-cjk: ★これを追加！日本語フォントの実体です
 RUN apk add --no-cache \
   poppler-utils \
   poppler-data \
+  font-noto-cjk \
   python3 \
   bash
 
