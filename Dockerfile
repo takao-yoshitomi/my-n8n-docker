@@ -3,11 +3,12 @@ FROM node:20-alpine
 # 1. 必要ツール
 # font-noto-cjk: ★これを追加！日本語フォントの実体です
 RUN apk add --no-cache \
-  poppler-utils \
-  poppler-data \
-  font-noto-cjk \
-  python3 \
-  bash
+    poppler-utils \
+    poppler-data \
+    font-noto-cjk \
+    python3 \
+    bash \
+    graphicsmagick
 
 # 2. n8n インストール
 RUN npm install -g n8n --omit=dev --legacy-peer-deps
