@@ -2,7 +2,9 @@ FROM node:20-alpine
 
 # 1. 必要ツール
 # font-noto-cjk: ★これを追加！日本語フォントの実体です
+# imagemagick: 画像処理ツールを追加しました
 RUN apk add --no-cache \
+    imagemagick \
     poppler-utils \
     poppler-data \
     font-noto-cjk \
