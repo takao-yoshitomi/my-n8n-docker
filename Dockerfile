@@ -12,8 +12,8 @@ RUN apk add --no-cache \
     bash \
     graphicsmagick
 
-# 2. n8n インストール
-RUN npm install -g n8n --omit=dev --legacy-peer-deps
+# 2. n8n インストール 最新の安定版へ　R8.4.4
+RUN npm install -g n8n@2.14.2 --omit=dev --legacy-peer-deps
 
 # 3. Codeノードの制限解除
 ENV NODE_FUNCTION_ALLOW_BUILTIN=*
