@@ -9,6 +9,9 @@ RUN apk add --no-cache \
     poppler-data \
     font-noto-cjk \
     python3 \
+    py3-setuptools \
+    make \
+    g++ \
     bash \
     graphicsmagick
 
