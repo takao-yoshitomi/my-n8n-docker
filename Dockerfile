@@ -1,4 +1,4 @@
-FROM node:20.11-alpine
+FROM node:22-alpine
 
 # 1. 必要ツール
 # font-noto-cjk: ★これを追加！日本語フォントの実体です
