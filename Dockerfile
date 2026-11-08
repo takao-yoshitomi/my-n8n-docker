@@ -1,4 +1,4 @@
-FROM node:24-alpine
+FROM node:22-alpine
 
 # 1. 必要ツール
 # font-noto-cjk: ★これを追加！日本語フォントの実体です
@@ -15,8 +15,8 @@ RUN apk add --no-cache \
     bash \
     graphicsmagick
 
-# 2. n8n インストール 最新の安定版へ　R8.11.8
-RUN npm install -g n8n@2.46.6 --omit=dev --legacy-peer-deps
+# 2. n8n インストール 最新の安定版へ下が戻した　R8.11.8
+RUN npm install -g n8n@2.14.2 --omit=dev --legacy-peer-deps
 
 # 3. Codeノードの制限解除
 ENV NODE_FUNCTION_ALLOW_BUILTIN=*
