@@ -19,7 +19,8 @@ RUN npm install -g n8n@2.14.2 --omit=dev --legacy-peer-deps
 
 # ★ start コマンドが実際に読み込めるかをビルド時に確かめる。
 #   失敗したらビルドが落ちて、握りつぶされている本当のエラーが出る。
-RUN node -e "require(require('child_process').execSync('npm root -g').toString().trim()+'/n8n/dist/commands/start.js'); console.log('OK: start.js loaded')"
+RUN node -e "try{require('/usr/local/lib/node_modules/n8n/dist/commands/start.js');console.log('OK start.js loaded')}catch(e){console.error('REAL ERROR:',e.message);console.error(e.stack);process.exit(1)}"
+
 
 ENV NODE_FUNCTION_ALLOW_BUILTIN=*
 ENV NODE_FUNCTION_ALLOW_EXTERNAL=*
